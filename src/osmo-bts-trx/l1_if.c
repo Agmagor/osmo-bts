@@ -666,6 +666,9 @@ int bts_model_l1sap_down(struct gsm_bts_trx *trx, struct osmo_phsap_prim *l1sap)
 				break;
 			}
 			/* deactivate associated channel */
+			LOGP(DL1C, LOGL_ERROR, "DBG: deactivate associated "
+			     "channel chan_nr 0x%02x vs lchan->nr 0x%02x\n",
+			     chan_nr, lchan->nr);
 			bts_model_lchan_deactivate_sacch(lchan);
 			if (!l1sap->u.info.u.act_req.sacch_only) {
 				/* deactivate dedicated channel */
